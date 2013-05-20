@@ -139,7 +139,7 @@ static int ctp_start(struct ezctp_MdUserDataField *pData)
 {
 	memset(pData, 0, sizeof(struct ezctp_MdUserDataField));
 
-	pData->pMdUserApi = ezctp_md_CreateFtdcMdApi("", false);
+	pData->pMdUserApi = ezctp_md_CreateFtdcMdApi("", false, false);
 	if (pData->pMdUserApi == NULL) {
 		printf("pMdUserApi = NULL!\n");
 		exit(EXIT_FAILURE);

@@ -54,7 +54,7 @@ void *ezctp_md_CreateCMdUserSpi(struct ezctp_MdUserDataField *pMdUserData);
 void ezctp_md_ReleaseCMdUserSpi(void *thisC);
 
 /* CThostFtdcMdApi class */
-void *ezctp_md_CreateFtdcMdApi(const char *pszFlowPath, const bool bIsUsingUdp);
+void *ezctp_md_CreateFtdcMdApi(const char *pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast);
 void ezctp_md_Release(void *thisC);
 void ezctp_md_Init(void *thisC);
 int ezctp_md_Join(void *thisC);

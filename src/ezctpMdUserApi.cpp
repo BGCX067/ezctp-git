@@ -23,9 +23,9 @@ using namespace std;
 /********************
  * FtdcMdApi
  ********************/
-void *ezctp_md_CreateFtdcMdApi(const char *pszFlowPath, const bool bIsUsingUdp)
+void *ezctp_md_CreateFtdcMdApi(const char *pszFlowPath, const bool bIsUsingUdp, const bool bIsMulticast)
 {
-	return CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath, bIsUsingUdp);
+	return CThostFtdcMdApi::CreateFtdcMdApi(pszFlowPath, bIsUsingUdp, bIsMulticast);
 }
 
 void ezctp_md_Release(void *thisC)

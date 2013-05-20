@@ -117,11 +117,11 @@ static int ctp_start(char *pConfPath, struct ezctp_MdUserDataField *pData)
 				exit(EXIT_FAILURE);
 			}
 		}
-		pData->pMdUserApi = ezctp_md_CreateFtdcMdApi(buf, false);
+		pData->pMdUserApi = ezctp_md_CreateFtdcMdApi(buf, false, false);
 	}
 	else {
 		printf("flow_path error rc=[%d]!\n", rc);
-		pData->pMdUserApi = ezctp_md_CreateFtdcMdApi("", false);
+		pData->pMdUserApi = ezctp_md_CreateFtdcMdApi("", false, false);
 	}
 	if (pData->pMdUserApi == NULL) {
 		printf("pMdUserApi = NULL!\n");

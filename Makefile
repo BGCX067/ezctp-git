@@ -6,7 +6,7 @@ CXX := g++
 CFLAGS := -Wall -fPIC -pthread
 CFLAGS += -I./include
 CFLAGS += -DHAVE_EZBOX_SERVICE_EZCTP=1
-LDFLAGS := -L.
+LDFLAGS := -L. -L./lib
 
 CTP_MDUSER_LIBS := -lthostmduserapi
 CTP_TRADER_LIBS := -lthosttraderapi
