@@ -1,0 +1,4 @@
+CFFEX: China Financial Futures Exchange
+SHFE: Shanghai Futures Exchange
+DCE: Dalian Commodity Exchange
+CZCE: Zhengzhou Commodity Exchange

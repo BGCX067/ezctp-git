@@ -1,0 +1,5 @@
+Please run the autogen.sh first:
+  ./autogen.sh
+
+Then build the application as usual:
+  make

@@ -1,0 +1,101 @@
+/* ============================================================================
+ * Project Name : ezctp Application Programming Interface
+ * Module Name  : util/ezctp_util_gen_instrument_id_czce_ws.c
+ *
+ * Description  : ezctp API for CThostFtdcXXXApi class
+ *
+ * Copyright (C) 2012 by ezctp-project
+ *
+ * History      Rev       Description
+ * 2012-03-08   0.1       Copy it from ezbox-project
+ * ============================================================================
+ */
+
+#include <stddef.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <assert.h>
+#include <errno.h>
+#include <syslog.h>
+#include <ctype.h>
+#include <stdarg.h>
+#include <time.h>
+
+#include "ezctp-util.h"
+
+#if 0
+#define DBG(format, args...) do {\
+	FILE *dbg_fp = fopen("/tmp/mydbg.ezctp_util_mkdir", "a"); \
+	if (dbg_fp) { \
+		fprintf(dbg_fp, format, ## args); \
+		fclose(dbg_fp); \
+	} \
+} while(0)
+#else
+#define DBG(format, args...)
+#endif
+
+#define EZCTP_INSTRUMENT_ID_CZCE_WS_STRING	"WS"
+
+/* month 1,3,5,7,9,11 */
+int ezctp_util_gen_instrument_id_czce_ws(char *buf, size_t len, int idx)
+{
+	size_t count = 0;
+	int i;
+	time_t t;
+	struct tm tm;
+	int ret;
+
+	if (idx > 0) {
+		/* for single instrument id */
+		count = snprintf(buf, len, "%s%d", EZCTP_INSTRUMENT_ID_CZCE_WS_STRING, idx);
+		if (count >= len) {
+			return -1;
+		}
+	}
+	else {
+		/* for full instrument id */
+		if (time(&t) == ((time_t) -1)) {
+			return -1;
+		}
+		if (gmtime_r(&t, &tm) == NULL) {
+			return -1;
+		}
+		count = 0;
+		for(i = 0; i < 14; i++) {
+			idx = tm.tm_year + (tm.tm_mon + i)/12 - (2010 - 1900);
+			idx = idx * 100; /* year part */
+			idx = idx + (tm.tm_mon + i)%12 + 1; /* month part */
+			/* skip not trading monthes */
+			if ((idx % 2) == 0) {
+				continue;
+			}
+			ret = snprintf(buf+count, len-count, "%s%d", EZCTP_INSTRUMENT_ID_CZCE_WS_STRING, idx);
+			if (ret < 0) {
+				return -1;
+			}
+			count += ret;
+			if (count >= len) {
+				return -1;
+			}
+			if (i < 13) {
+				ret = snprintf(buf+count, len-count, ",");
+				if (ret < 0) {
+					return -1;
+				}
+				count += ret;
+				if (count >= len) {
+					return -1;
+				}
+			}
+		}
+	}
+	return count;
+}
