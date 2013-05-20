@@ -71,7 +71,7 @@ void *ezctp_trader_CreateCTraderSpi(struct ezctp_TraderDataField *pTraderData);
 void ezctp_trader_ReleaseCTraderSpi(void *thisC);
 
 /* CThostFtdcTraderApi class */
-void *ezctp_trader_CreateFtdcTraderApi(const char *pszFlowPath, const bool bIsUsingUdp);
+void *ezctp_trader_CreateFtdcTraderApi(const char *pszFlowPath);
 void ezctp_trader_Release(void *thisC);
 void ezctp_trader_Init(void *thisC);
 int ezctp_trader_Join(void *thisC);

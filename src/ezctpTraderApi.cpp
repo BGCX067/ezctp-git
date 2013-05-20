@@ -23,9 +23,9 @@ using namespace std;
 /********************
  * FtdcTraderApi
  ********************/
-void *ezctp_trader_CreateFtdcTraderApi(const char *pszFlowPath, const bool bIsUsingUdp)
+void *ezctp_trader_CreateFtdcTraderApi(const char *pszFlowPath)
 {
-	return CThostFtdcTraderApi::CreateFtdcTraderApi(pszFlowPath, bIsUsingUdp);
+	return CThostFtdcTraderApi::CreateFtdcTraderApi(pszFlowPath);
 }
 
 void ezctp_trader_Release(void *thisC)

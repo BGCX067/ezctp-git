@@ -27,7 +27,7 @@ int main(void)
 {
 	struct ezctp_TraderDataField myTraderData;
 
-	pTraderApi = ezctp_trader_CreateFtdcTraderApi("", false);
+	pTraderApi = ezctp_trader_CreateFtdcTraderApi("");
 	if (pTraderApi == NULL) {
 		printf("pTraderApi = NULL\n");
 		exit(EXIT_FAILURE);

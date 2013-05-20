@@ -117,11 +117,11 @@ static int ctp_start(char *pConfPath, struct ezctp_TraderDataField *pData)
 				exit(EXIT_FAILURE);
 			}
 		}
-		pData->pTraderApi = ezctp_trader_CreateFtdcTraderApi(buf, false);
+		pData->pTraderApi = ezctp_trader_CreateFtdcTraderApi(buf);
 	}
 	else {
 		printf("flow_path error rc=[%d]!\n", rc);
-		pData->pTraderApi = ezctp_trader_CreateFtdcTraderApi("", false);
+		pData->pTraderApi = ezctp_trader_CreateFtdcTraderApi("");
 	}
 	if (pData->pTraderApi == NULL) {
 		printf("pTraderApi = NULL!\n");
