@@ -3,10 +3,17 @@ TOPDIR := $(shell pwd)
 CC := gcc
 CXX := g++
 
+ARCH ?= x86_64
+
 CFLAGS := -Wall -fPIC -pthread
 CFLAGS += -I./include
 CFLAGS += -DHAVE_EZBOX_SERVICE_EZCTP=1
-LDFLAGS := -L. -L./lib
+LDFLAGS := -L.
+ifeq ($(ARCH),x86_64)
+LDFLAGS += -L./lib64
+else
+LDFLAGS += -L./lib32
+endif
 
 CTP_MDUSER_LIBS := -lthostmduserapi
 CTP_TRADER_LIBS := -lthosttraderapi
