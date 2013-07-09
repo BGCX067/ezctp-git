@@ -59,13 +59,13 @@ int main(int argc, char **argv)
 {
 	int rc = EXIT_SUCCESS;
 
-	printf("sizeof(struct CThostFtdcDepthMarketDataField)=[%lu]\n",
+	printf("sizeof(struct CThostFtdcDepthMarketDataField)=[%u]\n",
 		sizeof(struct CThostFtdcDepthMarketDataField));
 	
 	printf("packets per day=[%d]\n",
 		ezctp_util_get_sfit_packets_per_day());
 
-	printf("data size per day=[%lu]\n",
+	printf("data size per day=[%u]\n",
 		sizeof(struct CThostFtdcDepthMarketDataField) * ezctp_util_get_sfit_packets_per_day());
 	return (rc);
 }

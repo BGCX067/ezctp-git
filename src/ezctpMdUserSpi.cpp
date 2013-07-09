@@ -106,9 +106,9 @@ void CMdUserSpi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
 void CMdUserSpi::OnRspUserLogout(CThostFtdcUserLogoutField *pRspUserLogout,
 		CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	CThostFtdcMdApi *pMdUserApi;
+	//CThostFtdcMdApi *pMdUserApi;
 
-	pMdUserApi = static_cast<CThostFtdcMdApi*>(pMdUserData->pMdUserApi);
+	//pMdUserApi = static_cast<CThostFtdcMdApi*>(pMdUserData->pMdUserApi);
 	cerr << "--->>> " << __FUNCTION__ << endl;
 }
 

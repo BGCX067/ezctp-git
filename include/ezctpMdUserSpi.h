@@ -7,6 +7,7 @@ class CMdUserSpi : public CThostFtdcMdSpi
 {
 public:
 	static CMdUserSpi *CreateCMdUserSpi(struct ezctp_MdUserDataField *pMdUserData);
+	~CMdUserSpi() {};
 
 	virtual void OnFrontConnected();
 	
