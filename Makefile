@@ -10,8 +10,10 @@ CFLAGS += -I./include
 CFLAGS += -DHAVE_EZBOX_SERVICE_EZCTP=1
 LDFLAGS := -L.
 ifeq ($(ARCH),x86_64)
+CFLAGS += -DARCH_X86_64
 LDFLAGS += -L./lib64
 else
+CFLAGS += -DARCH_X86
 LDFLAGS += -L./lib32
 endif
 
@@ -25,6 +27,11 @@ SQLITE3_LIBS := -lsqlite3
 CXX_CFLAGS := -Wall -fPIC -pthread
 CXX_CFLAGS += -I./include
 CXX_CFLAGS += -DHAVE_EZBOX_SERVICE_EZCTP=1
+ifeq ($(ARCH),x86_64)
+CXX_CFLAGS += -DARCH_X86_64
+else
+CXX_CFLAGS += -DARCH_X86
+endif
 
 EZCTP_MDUSER_CXX_SRCS := ezctpMdUserApi.cpp
 EZCTP_MDUSER_CXX_SRCS += ezctpMdUserSpi.cpp
